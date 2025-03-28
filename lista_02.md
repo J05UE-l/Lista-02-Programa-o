@@ -48,7 +48,7 @@ B) O código avalia a expressão booleana, imprime `false`, calcula o produto do
 C) O código avalia a expressão booleana, imprime `true` e, em seguida, verifica se o número 6 está na lista.
 
 D) O código avalia a expressão booleana, imprime `false` e ordena os valores em ordem crescente.
-
+Resposta Letra A
 
 ______
 
@@ -110,6 +110,7 @@ B) analisarCredito1() exibirá: 'Seu crédito foi negado. Saldo disponível: -60
 C) analisarCredito1() exibirá: 'Seu crédito foi negado. Saldo disponível: -200.', enquanto analisarCredito2() exibirá: 'Seu crédito foi aprovado. Saldo disponível: 100.'
 
 D) Ambas as funções exibirão: 'Seu crédito foi aprovado Saldo disponível: 500.'
+Resposta Letra A
 ______
 
 **3)** Considere o seguinte trecho de código em JavaScript:
@@ -134,6 +135,8 @@ B) O código verifica se a idade pertence à faixa adulta. Se for, exibe "Você 
 C) O código verifica se a idade está entre 18 e 60 anos e, se for, imprime "Você é um adulto!". Se não estiver nesse intervalo, imprime "Você está na melhor idade!".
 
 D) O código verifica se a idade é menor de 18, entre 18 e 60 ou acima de 60, imprimindo uma mensagem específica para cada caso.
+
+Resposta: Letra B
 ______
 
 **4)** Qual será o resultado impresso no console após a execução do seguinte código?
@@ -160,6 +163,7 @@ for (var i = 0; i < consumoDispositivos.length; i++) {
 ```
 
 Escolha a opção que responde corretamente:
+Resposta: Letra D
 
 A)
 Dispositivo 1 ligado. Energia restante: 900
@@ -202,10 +206,11 @@ Dispositivo 3 ligado com bateria extra. Energia restante: 200
 Dispositivo 4 não pode ser ligado. Energia insuficiente.
 
 Dispositivo 5 não pode ser ligado. Energia insuficiente.
-
+Resposta: Letra D
 ______
 
 **5)** Qual é a principal função do método update() em um jogo desenvolvido com Phaser.js?
+Resposta: Letra B
 
 Escolha a opção que melhor descreve seu propósito:
 
@@ -216,9 +221,11 @@ B) O método update() é chamado continuamente a cada quadro (frame) do jogo, se
 C) O método update() renderiza todos os sprites na tela e garante que a física do jogo seja processada corretamente.
 
 D) O método update() é chamado apenas uma vez após a criação da cena, sendo utilizado para configurar variáveis iniciais do jogo.
+Resposta: Letra B
 ______
 
 **6)** Qual é o principal objetivo do módulo Matter.js Physics em Phaser.js?
+Resposta: Letra A
 
 Escolha a opção que responde corretamente:
 
@@ -229,6 +236,7 @@ B) Gerenciar eventos de entrada do usuário, como cliques e toques na tela, perm
 C) Renderizar gráficos otimizados para jogos 2D e garantir uma taxa de quadros estável.
 
 D) Criar animações automáticas para sprites e objetos interativos sem necessidade de programação de movimentação.
+Resposta: Letra A
 
 ______
 
@@ -245,6 +253,18 @@ Pedidos entre R$50,00 e R$199,99 (inclusive) → "Frete com custo adicional!"
 Pedidos de R$200,00 ou mais → "Frete grátis!"
 ```
 Implemente um pseudocódigo que receba o valor total da compra e exiba a classificação correta do frete para o cliente.
+```
+Escreva : "Valor total da compra: "
+    pegue valorCompra
+
+    se valorCompra < 50 entao
+        escreva "Frete não disponível!"
+    senao se valorCompra >= 50 e valorCompra <= 199.99 entao
+        escreva "Frete com custo adicional!"
+    senao
+        escreva "Frete grátis!"
+fim
+```
 ______
 
 **8)** Considere a implementação da classe base Veiculo em um sistema de modelagem de veículos. Sua tarefa é implementar, utilizando pseudocódigo, as classes derivadas Carro e Moto, que herdam da classe Veiculo, adicionando atributos específicos e métodos para calcular o consumo de combustível de um carro e de uma moto, respectivamente.
