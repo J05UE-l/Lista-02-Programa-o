@@ -255,14 +255,14 @@ Pedidos de R$200,00 ou mais → "Frete grátis!"
 Implemente um pseudocódigo que receba o valor total da compra e exiba a classificação correta do frete para o cliente.
 ```
 Escreva : "Valor total da compra: "
-    pegue valorCompra
+pegue valorCompra
 
-    se valorCompra < 50 entao
-        escreva "Frete não disponível!"
-    senao se valorCompra >= 50 e valorCompra <= 199.99 entao
-        escreva "Frete com custo adicional!"
-    senao
-        escreva "Frete grátis!"
+se valorCompra < 50 entao
+  escreva "Frete não disponível!"
+  senao se valorCompra >= 50 e valorCompra <= 199.99 entao
+    escreva "Frete com custo adicional!"
+      senao
+    escreva "Frete grátis!"
 fim
 ```
 ______
@@ -283,6 +283,46 @@ Método CalcularConsumo():
 Implementação genérica para cálculo de consumo, a ser sobrescrita pelas subclasses.
 Agora, implemente as classes Carro e Moto, garantindo que ambas herdem de Veiculo e possuam métodos específicos para calcular o consumo de combustível com base na quilometragem e eficiência do veículo.
 ______
+```
+Classe Veiculo:
+    Atributos:
+        modelo: texto
+        ano: inteiro
+
+    Método Construtor(modelo: texto, ano: inteiro):
+        Define self.modelo = modelo
+        Define self.ano = ano
+
+    Método CalcularConsumo():
+        // Método base (pode ser vazio ou retornar 0)
+        Retornar 0
+
+Classe Carro herda Veiculo:
+    Atributos:
+        quilometros_por_litro: real  // Atributo específico do Carro
+
+    Método Construtor(modelo: texto, ano: inteiro, quilometros_por_litro: real):
+        super().Construtor(modelo, ano)  // Chama construtor da classe base
+        Define self.quilometros_por_litro = quilometros_por_litro
+
+    Método CalcularConsumo(distancia: real) -> real:
+        // Calcula litros de combustível necessários para a distância
+        Retornar distancia / self.quilometros_por_litro
+
+Classe Moto herda Veiculo:
+    Atributos:
+        consumo_por_km: real  // Atributo específico da Moto (ex: litros por km)
+
+    Método Construtor(modelo: texto, ano: inteiro, consumo_por_km: real):
+        super().Construtor(modelo, ano)
+        Define self.consumo_por_km = consumo_por_km
+
+    Método CalcularConsumo(distancia: real) -> real:
+        // Calcula litros de combustível necessários para a distância
+        Retornar distancia * self.consumo_por_km
+
+```
+
 
 **9)** Você é um cientista da NASA e está ajudando no desenvolvimento de um sistema de pouso para sondas espaciais em Marte. Seu objetivo é calcular o tempo necessário para que a sonda reduza sua velocidade até um nível seguro para pouso, considerando uma velocidade inicial de entrada na atmosfera marciana e uma taxa de desaceleração constante causada pelo atrito atmosférico e retrofoguetes.
 
@@ -296,7 +336,47 @@ Considere a fórumla de atualização velocidade:
 ```
 Seu programa deve determinar quanto tempo será necessário para que a sonda atinja uma velocidade segura de pouso, sem ultrapassar os limites estabelecidos.
 ______
+```
+```plaintext
+Início
+    // Entrada de dados
+    Escrever "Digite a velocidade inicial (m/s): "
+    Ler velocidadeInicial
+    
+    Escrever "Digite a velocidade segura para pouso (m/s): "
+    Ler velocidadeSegura
+    
+    Escrever "Digite a taxa de desaceleração (m/s²): "
+    Ler desaceleracao
+    
+    Escrever "Digite o tempo máximo permitido para descida (s): "
+    Ler tempoMaximo
+    
+    Escrever "Digite o limite mínimo de desaceleração (m/s²): "
+    Ler desaceleracaoMinima
 
+    // Verificar validade da desaceleração
+    Se desaceleracao <= 0 Então
+        Escrever "Erro: A desaceleração deve ser um valor positivo."
+    Senão Se desaceleracao < desaceleracaoMinima Então
+        Escrever "Erro: A desaceleração não pode ser inferior ao mínimo de ", desaceleracaoMinima, " m/s²."
+    Senão
+        // Calcular tempo necessário
+        Se velocidadeInicial <= velocidadeSegura Então
+            tempoNecessario ← 0
+        Senão
+            tempoNecessario ← (velocidadeInicial - velocidadeSegura) / desaceleracao
+        Fim Se
+
+        // Verificar se o tempo está dentro do limite
+        Se tempoNecessario > tempoMaximo Então
+            Escrever "Alerta: Tempo de descida excedeu o máximo de ", tempoMaximo, " segundos."
+        Senão
+            Escrever "Tempo necessário para pouso seguro: ", tempoNecessario, " segundos."
+        Fim Se
+    Fim Se
+Fim
+```
 **10)** Em um sistema de análise financeira, as operações de investimento de uma empresa podem ser representadas por matrizes, onde cada linha representa um tipo de investimento e cada coluna representa um período de tempo.
 
 A seguir, é fornecida a implementação da função SomarMatrizesInvestimento(matrizA, matrizB), que soma os valores de duas matrizes de investimento. Sua tarefa é implementar uma função semelhante, porém que realize a multiplicação das matrizes de investimento, determinando como os investimentos afetam os resultados ao longo do tempo.
@@ -327,3 +407,34 @@ Escrever("Total de investimentos acumulados:")
 ImprimirMatriz(totalInvestimentos)  
 ```
 Agora, implemente a função MultiplicarMatrizesInvestimento(matrizA, matrizB), que multiplica as duas matrizes, simulando o efeito de diferentes fatores de crescimento e impacto financeiro nos investimentos ao longo do tempo.
+
+```
+Função MultiplicarMatrizesInvestimento(matrizA, matrizB):
+    # Verifica compatibilidade das dimensões para multiplicação
+    Se tamanho(matrizA[0]) ≠ tamanho(matrizB) então:
+        Retornar "As matrizes não podem ser multiplicadas. Dimensões incompatíveis."
+    Senão:
+        linhasA <- tamanho(matrizA)
+        colunasA <- tamanho(matrizA[0])
+        linhasB <- tamanho(matrizB)
+        colunasB <- tamanho(matrizB[0])
+        matrizResultado <- novaMatriz(linhasA, colunasB)  # Cria matriz vazia
+
+        # Calcula cada elemento da matriz resultado
+        Para i de 0 até linhasA-1 faça:
+            Para j de 0 até colunasB-1 faça:
+                soma <- 0
+                Para k de 0 até colunasA-1 faça:
+                    soma <- soma + (matrizA[i][k] * matrizB[k][j])
+                matrizResultado[i][j] <- soma
+
+        Retornar matrizResultado
+
+# Exemplo de uso da função
+investimentosFatores <- [[0.5, 1.2], [0.8, 1.5]]  # Fatores de crescimento
+impactoFinanceiro <- [[2, 0], [0, 3]]             # Matriz de impacto
+
+resultadoInvestimentos <- MultiplicarMatrizesInvestimento(investimentosFatores, impactoFinanceiro)
+Escrever("Resultado da aplicação dos fatores:")
+ImprimirMatriz(resultadoInvestimentos)
+```
